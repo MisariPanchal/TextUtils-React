@@ -7,9 +7,13 @@ export default function Navbar(props) {
     <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
       <div className="container-fluid">
         {/* <Link className="navbar-brand " to="/"> */}
-        <a className="navbar-brand " href="#">
+        {/* <a className="navbar-brand " href="#">
           {props.title}
-        </a>
+        </a> */}
+        <button className="navbar-brand" onClick={() => {/* handle click */ }}>
+          {props.title}
+        </button>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -27,9 +31,13 @@ export default function Navbar(props) {
               {/* <Link className="nav-link active " aria-current="page" to="/">
                 Home
               </Link> */}
-              <a className="nav-link active " aria-current="page" href="#">
+              {/* <a className="nav-link active " aria-current="page" href="#">
                 Home
-              </a>
+              </a> */}
+              <button className="nav-link active" onClick={() => {/* handle click */ }}>
+                Home
+              </button>
+
             </li>
             {/* <li className="nav-item">
               <Link className="nav-link text-secondary" to="/about">
@@ -49,8 +57,8 @@ export default function Navbar(props) {
             </button>
           </form> */}
           <div className="form-check form-switch">
-          <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={props.toggleMode}/>
-          <label className={`form-check-label text-${props.mode==='light'?'dark':'light'}`} htmlFor="flexSwitchCheckDefault">Enable Dark Mode</label>
+            <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={props.toggleMode} />
+            <label className={`form-check-label text-${props.mode === 'light' ? 'dark' : 'light'}`} htmlFor="flexSwitchCheckDefault">Enable Dark Mode</label>
           </div>
         </div>
       </div>
