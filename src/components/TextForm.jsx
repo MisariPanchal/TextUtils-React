@@ -39,9 +39,10 @@ export default function TextForm(props) {
   }
 
   const handleCopy = () => {
-    let text = document.getElementById('myBox');
-    text.select();
-    navigator.clipboard.writeText(text.value);
+    // let text = document.getElementById('myBox');
+    // text.select();
+    navigator.clipboard.writeText(text);
+    // document.getSelection().removeAllRanges();
     props.showAlert("Copied to Clipboard!", "success");
   }
   const handleExtraSpace = () => {
@@ -73,8 +74,6 @@ export default function TextForm(props) {
     return sentences.filter(sentence => sentence.length > 0).length;
   }
 
-  
-
   const style = {
     color : props.mode === 'light' ? 'black' : 'white',
     backgroundColor: props.mode === 'light' ? 'white' : '#0b0940',
@@ -92,17 +91,17 @@ export default function TextForm(props) {
   return (
     <>
       <div style={style}>
-        <h1 style={style}>{props.heading}</h1>
+        <h1 className='mb-3' style={style}>{props.heading}</h1>
         <div className="mb-3">
           {/* <input name="UserName"   onChange={(event) => console.log(event.target.value ,":Event", event.target)}/> */}
           <textarea style={style} className="form-control" placeholder='Enter text here' value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
         </div>
-        <button className="btn btn-primary me-3" onClick={handleUpCsClick}>Convert to Uppercase</button>
-        <button className="btn btn-primary me-3" onClick={handleLowCsClick}>Convert to Lowercase</button>
-        <button className="btn btn-primary me-3" onClick={handleCapClick}>Convert to Capitalize</button>
-        <button className="btn btn-primary me-3" onClick={handleClearClick}>Clear Text</button>
-        <button className="btn btn-primary me-3" onClick={handleCopy}>Copy Text</button>
-        <button className="btn btn-primary me-3" onClick={handleExtraSpace}>Remove Extra Space</button>
+        <button disabled={text.length===0} className="btn btn-primary me-3 my-1" onClick={handleUpCsClick}>Convert to Uppercase</button>
+        <button disabled={text.length===0} className="btn btn-primary me-3 my-1" onClick={handleLowCsClick}>Convert to Lowercase</button>
+        <button disabled={text.length===0} className="btn btn-primary me-3 my-1" onClick={handleCapClick}>Convert to Capitalize</button>
+        <button disabled={text.length===0} className="btn btn-primary me-3 my-1" onClick={handleClearClick}>Clear Text</button>
+        <button disabled={text.length===0} className="btn btn-primary me-3 my-1" onClick={handleCopy}>Copy Text</button>
+        <button disabled={text.length===0} className="btn btn-primary me-3 my-1" onClick={handleExtraSpace}>Remove Extra Space</button>
       </div>
       <div className="container my-3" style={style}>
       <h3>Text Analysis</h3>
@@ -134,7 +133,7 @@ export default function TextForm(props) {
         <p>{text.split(" ").length} words and {text.length} characters</p>
         <p>{0.008 * text.split(" ").length} Minutes read</p> */}
         <h3>Preview</h3>
-        <pre style={preStyle}>{text.length > 0 ? text : "Enter some text to preview it here."}</pre>
+        <pre style={preStyle}>{text.length > 0 ? text : "Nothing to preview."}</pre>
         
       </div>
     </>
