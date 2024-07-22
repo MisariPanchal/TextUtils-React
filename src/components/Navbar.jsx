@@ -7,9 +7,9 @@ export default function Navbar(props) {
     <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
       <div className="container-fluid">
         {/* <Link className="navbar-brand " to="/"> */}
-        <button className="navbar-brand" onClick={() => {/* handle click */}}>
-  {props.title}
-</button>
+        <a className="navbar-brand " href="#">
+          {props.title}
+        </a>
         <button
           className="navbar-toggler"
           type="button"
@@ -27,9 +27,9 @@ export default function Navbar(props) {
               {/* <Link className="nav-link active " aria-current="page" to="/">
                 Home
               </Link> */}
-              <button className="nav-link active" onClick={() => {/* handle click */}}>
-  Home
-</button>
+              <a className="nav-link active " aria-current="page" href="#">
+                Home
+              </a>
             </li>
             {/* <li className="nav-item">
               <Link className="nav-link text-secondary" to="/about">
